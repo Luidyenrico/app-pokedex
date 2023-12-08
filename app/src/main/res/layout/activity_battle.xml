@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/type_background">
+    android:background="@drawable/battle_background">
 
     <ImageButton
         android:id="@+id/botaoRetornar"
@@ -58,7 +58,7 @@
                android:layout_width="65dp"
                android:layout_height="65dp"
                android:layout_gravity="center"
-               android:src="@drawable/arena" />
+               android:src="@drawable/vs" />
 
            <Spinner
                android:id="@+id/spinner2"
@@ -85,5 +85,14 @@
         android:layout_below="@+id/choices"
         android:layout_marginTop="16dp"
         android:padding="16dp" />
+
+    <ImageView
+        android:id="@+id/resultadoImagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/buttonFight"
+        android:layout_marginTop="16dp"
+        android:visibility="invisible"/>
 
 </RelativeLayout>
