@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Pokedex</string>
+    <string name="descriptionTypes">In the Pokémon world, Pokémon are distinguished by their characteristics. These characteristics are linked to their abilities and the types that differentiate them. The types of each Pokémon are crucial in battles as they often determine the outcome. Many Pokémon have only one type in their classification, while others have two types, a primary and a secondary one. But what do these types reveal about each Pokémon? Essentially, each Pokémon type has an advantage over another type. For example, Water-type Pokémon have an advantage over Fire-type Pokémon. On the other hand, Water-type Pokémon are weak against Electric-type Pokémon. Thus, for each of the 18 Pokémon types, there is a set of strengths and weaknesses. Remembering all these advantages and disadvantages can often be quite challenging!</string>
+</resources>

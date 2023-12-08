@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/inicial_background">
+
+
+    <ImageView
+        android:id="@+id/imagemCentral"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/initialimage" />
+
+    <Button
+        android:id="@+id/botaoPokedex"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/imagemCentral"
+        android:layout_marginTop="50dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/black"
+        android:text="Pokedex" />
+
+    <Button
+        android:id="@+id/botaoTypes"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/botaoPokedex"
+        android:layout_marginTop="8dp"
+        android:text="Tipos de pokemon / battle"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/black"
+        />
+
+</RelativeLayout>
