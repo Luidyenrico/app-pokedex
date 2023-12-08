@@ -137,7 +137,7 @@ class BattleActivity : AppCompatActivity() {
         Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show()
 
         if (vencedor != "DRAW") {
-            val resourceId = resources.getIdentifier("${vencedor.toLowerCase()}_img", "drawable", packageName)
+            val resourceId = resources.getIdentifier("${vencedor.lowercase()}_img", "drawable", packageName)
             resultadoImagem.setImageResource(resourceId)
             resultadoImagem.visibility = View.VISIBLE
         } else {
