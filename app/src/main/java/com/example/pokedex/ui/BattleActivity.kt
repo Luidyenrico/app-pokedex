@@ -29,21 +29,21 @@ class BattleActivity : AppCompatActivity() {
         val spinner1: Spinner = findViewById(R.id.spinner1)
         val spinner2: Spinner = findViewById(R.id.spinner2)
 
-// Array de opções para os Spinners
+        // Array de opções para os Spinners
         val opcoes = arrayOf("NORMAL", "FIRE", "GRASS", "WATER", "ELECTRIC", "ICE", "GROUND", "FLYING", "POISON",
-            "FIGHTING", "PSYCHIC","DARK", "ROCK", "BUG", "GHOST", "STEEL", "DRAGON", "FAIRY")
+            "FIGHTING", "PSYCHIC", "DARK", "ROCK", "BUG", "GHOST", "STEEL", "DRAGON", "FAIRY")
 
-// Adapter para os Spinners
+        // Adapter para os Spinners
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcoes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-// Definindo o adapter para os Spinners
+        // Definindo o adapter para os Spinners
         spinner1.adapter = adapter
         spinner2.adapter = adapter
 
         spinner1.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
-                // Aqui você pode armazenar a seleção do Spinner 1
+                // Aqui você pode armazenar a seleção do Spinner 1 se necessário
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -53,7 +53,7 @@ class BattleActivity : AppCompatActivity() {
 
         spinner2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
-                // Aqui você pode armazenar a seleção do Spinner 2
+                // Aqui você pode armazenar a seleção do Spinner 2 se necessário
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
@@ -61,34 +61,59 @@ class BattleActivity : AppCompatActivity() {
             }
         })
 
-        // Você pode adicionar um botão ou outra ação para comparar as seleções e exibir o resultado
-        val botaoBatalhar: Button = findViewById(R.id.buttonBattle)
+        // Botão para comparar as seleções e exibir o resultado
+        val botaoBatalhar: Button = findViewById(R.id.buttonFight)
         botaoBatalhar.setOnClickListener {
             val selecaoSpinner1 = spinner1.selectedItem.toString()
             val selecaoSpinner2 = spinner2.selectedItem.toString()
 
-            // Aqui você pode comparar as seleções e exibir a imagem do tipo vencedor com uma frase de vitória
-            if (selecaoSpinner1 == selecaoSpinner2) {
+            // Verificação de empate
+            if (selecaoSpinner1.equals(selecaoSpinner2, ignoreCase = true)) {
                 Toast.makeText(this, "Empate!", Toast.LENGTH_SHORT).show()
             } else {
-                // Implemente a lógica para determinar o vencedor e exibir a imagem correspondente
+                // Determinar o vencedor e exibir o resultado
                 val vencedor = determinarVencedor(selecaoSpinner1, selecaoSpinner2)
                 exibirResultado(vencedor)
             }
         }
     }
 
-    // Implemente a lógica para determinar o vencedor
+    // Lógica para determinar o vencedor
     private fun determinarVencedor(tipo1: String, tipo2: String): String {
-        // Adicione a lógica de comparação de tipos aqui
-        // Por enquanto, vamos apenas retornar o tipo do Spinner 1 como vencedor
-        return tipo1
+        if (tipo1 == tipo2) {
+            return "Empate!"
+        }
+
+        return when (tipo1) {
+            "FIRE" -> when (tipo2) {
+                "WATER", "GRASS" -> "WATER"
+                "FLYING" -> "FIRE"
+                else -> tipo2
+            }
+            "WATER" -> when (tipo2) {
+                "FIRE", "GROUND" -> "WATER"
+                "FLYING" -> "FLYING"
+                else -> tipo2
+            }
+            "GRASS" -> when (tipo2) {
+                "FIRE", "GROUND" -> "GRASS"
+                "FLYING" -> "FLYING"
+                else -> tipo2
+            }
+            "FLYING" -> when (tipo2) {
+                "FIRE" -> "FIRE"
+                "WATER", "GRASS" -> "FLYING"
+                else -> tipo2
+            }
+            else -> "Resultado Indefinido"
+        }
     }
 
-    // Implemente a lógica para exibir o resultado (imagem do tipo vencedor com uma frase de vitória)
+    // Lógica para exibir o resultado
     private fun exibirResultado(vencedor: String) {
         // Adicione a lógica de exibição de resultado aqui
         // Por enquanto, vamos apenas exibir uma mensagem com o tipo vencedor
         Toast.makeText(this, "Vencedor: $vencedor", Toast.LENGTH_SHORT).show()
     }
 }
+
