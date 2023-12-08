@@ -3,6 +3,7 @@ package com.example.pokedex.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pokedex.R
@@ -14,6 +15,7 @@ class TypesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_types)
 
         val botaoRetornar: ImageButton = findViewById(R.id.botaoRetornar)
+        val botaoBattle: Button = findViewById(R.id.buttonBattle)
 
         botaoRetornar.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View) {
@@ -21,5 +23,13 @@ class TypesActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
+
+        botaoBattle.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
+                val intent = Intent(this@TypesActivity, BattleActivity::class.java)
+                startActivity(intent)
+            }
+        })
+
     }
 }
