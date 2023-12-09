@@ -3,6 +3,7 @@ package com.example.pokedex.api
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+// Representa cada informação dos pokemons
 data class Pokemon(
     @Expose @SerializedName("id") val id: Int,
     @Expose @SerializedName("name") val name: String,
@@ -23,9 +24,13 @@ data class Pokemon(
     @Expose @SerializedName("types") val types: List<Type>,
     @Expose @SerializedName("flavor_text_entries") val flavorTextEntries: List<FlavorTextEntry>,
 
-        // propriedade adicionada para as entradas de texto.
+        // propriedade adicionada para as entradas de texto em lista.
     var englishFlavorTextEntries: List<String> = emptyList()
 )
+
+
+// Cada uma cas classes abaixo capturam informações da api: imagens, detalhes de peso, altura, tipo, habilidades, etc...
+
 
 data class FlavorTextEntry(
     @Expose @SerializedName("flavor_text") val flavorText: String,
@@ -36,6 +41,7 @@ data class Language(
     @Expose @SerializedName("name") val name: String,
     @Expose @SerializedName("url") val url: String
 )
+
 data class Sprites(
     @Expose @SerializedName("back_default") val backDefault: String?,
     @Expose @SerializedName("back_female") val backFemale: String?,
@@ -46,7 +52,6 @@ data class Sprites(
     @Expose @SerializedName("front_shiny") val frontShiny: String?,
     @Expose @SerializedName("front_shiny_female") val frontShinyFemale: String?
 )
-
 data class Ability(
     @Expose @SerializedName("ability") val ability: AbilityInfo,
     @Expose @SerializedName("is_hidden") val isHidden: Boolean,

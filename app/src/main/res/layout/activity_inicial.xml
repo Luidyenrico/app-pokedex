@@ -17,24 +17,36 @@
     <Button
         android:id="@+id/botaoPokedex"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_below="@id/imagemCentral"
         android:layout_marginTop="50dp"
-        android:textSize="18dp"
+        android:layout_marginHorizontal="30dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="10"
+        android:shadowDy="5"
+        android:shadowDx="5"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button"
         android:text="Pokedex" />
 
     <Button
         android:id="@+id/botaoTypes"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_below="@id/botaoPokedex"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="10"
+        android:shadowDy="5"
+        android:shadowDx="5"
         android:text="Pokemon types / battle"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button"
         />
 
 </RelativeLayout>

@@ -14,6 +14,9 @@ class TypesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_types)
 
+
+        //Botao de voltar e de batalha que redirecionam o usuario ou de volta ou para a pagina de luta de tipos.
+
         val botaoRetornar: ImageButton = findViewById(R.id.botaoRetornar)
         val botaoBattle: Button = findViewById(R.id.buttonBattle)
 

@@ -32,7 +32,7 @@ class BattleActivity : AppCompatActivity() {
         val spinner2: Spinner = findViewById(R.id.spinner2)
         resultadoImagem = findViewById(R.id.resultadoImagem)
 
-        // Array de opções para os Spinners
+        // Opcoes para os Spinners
         val opcoes = arrayOf("NORMAL", "FIRE", "GRASS", "WATER", "ELECTRIC", "ICE", "GROUND", "FLYING", "POISON",
             "FIGHTING", "PSYCHIC", "DARK", "ROCK", "BUG", "GHOST", "STEEL", "DRAGON", "FAIRY")
 
@@ -40,41 +40,39 @@ class BattleActivity : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opcoes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        // Definindo o adapter para os Spinners
+        // Define o adapter para os Spinners
         spinner1.adapter = adapter
         spinner2.adapter = adapter
 
+        //Grava a informação do spinner1
         spinner1.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
-                // Aqui você pode armazenar a seleção do Spinner 1 se necessário
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
-                // Não é necessário implementar nada aqui
             }
         })
 
+        //Grava a informação do spinner2
         spinner2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {
-                // Aqui você pode armazenar a seleção do Spinner 2 se necessário
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {
-                // Não é necessário implementar nada aqui
             }
         })
 
-        // Botão para comparar as seleções e exibir o resultado
+        // Botão para comparar as selecoes e exibir o resultado
         val botaoBatalhar: Button = findViewById(R.id.buttonFight)
         botaoBatalhar.setOnClickListener {
             val selecaoSpinner1 = spinner1.selectedItem.toString()
             val selecaoSpinner2 = spinner2.selectedItem.toString()
 
-            // Verificação de empate
+            // Verifica o empate
             if (selecaoSpinner1.equals(selecaoSpinner2, ignoreCase = true)) {
                 Toast.makeText(this, "DRAW", Toast.LENGTH_SHORT).show()
             } else {
-                // Determinar o vencedor e exibir o resultado
+                // Determina o vencedor e exibir o resultado
                 val vencedor = determinarVencedor(selecaoSpinner1, selecaoSpinner2)
                 exibirResultado(vencedor)
             }
@@ -82,7 +80,7 @@ class BattleActivity : AppCompatActivity() {
 
     }
 
-    // Lógica para determinar o vencedor
+    // Funcao que determina o vencedor pelo tipo de vantagem pokemon
     private fun determinarVencedor(tipo1: String, tipo2: String): String {
         if (tipo1 == tipo2) {
             return "DRAW"
@@ -100,6 +98,7 @@ class BattleActivity : AppCompatActivity() {
         }
     }
 
+    //Pega quais tipos pokemons tem vantagens sobre quais outros
     private fun obterVantagens(tipo: String): List<String> {
         return when (tipo) {
             "NORMAL" -> emptyList()
@@ -124,16 +123,16 @@ class BattleActivity : AppCompatActivity() {
         }
     }
 
-    // Lógica para exibir o resultado
+    // Exibir o resultado
     private fun exibirResultado(vencedor: String) {
-        // Verifica se o vencedor é "DRAW"
+        // Verifica se deu empate
         val mensagem = if (vencedor == "DRAW") {
             "DRAW"
         } else {
             "$vencedor WINS"
         }
 
-        // Exibe a mensagem
+        // Exibe a mensagem de vitoria
         Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show()
 
         if (vencedor != "DRAW") {

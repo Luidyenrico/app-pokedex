@@ -12,16 +12,18 @@ class InicialActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
 
+        //Captura os botoes
         val botaoPokedex = findViewById<Button>(R.id.botaoPokedex)
         val botaoTypes = findViewById<Button>(R.id.botaoTypes)
 
         botaoPokedex.setOnClickListener {
+            // Redireciona para a pokedex
             val intent = Intent(this, PokemonList::class.java)
             startActivity(intent)
         }
 
         botaoTypes.setOnClickListener {
-            // Redirecionar para a SegundaOpcaoActivity
+            // Redireciona para a aba de tipos
             val intent = Intent(this, TypesActivity::class.java)
             startActivity(intent)
         }

@@ -11,6 +11,7 @@ import com.example.pokedex.databinding.ActivityPokeInfoBinding
 
 class PokeInfoActivity : AppCompatActivity() {
 
+    //Constroi a pagina
     lateinit var viewModel: PokeInfoViewModel
     private lateinit var binding: ActivityPokeInfoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,7 @@ class PokeInfoActivity : AppCompatActivity() {
         initUI()
     }
 
+    //Exibe todas as informações do pokemon
     private fun initUI() {
         val id = intent.extras?.get("id") as Int
 
@@ -34,13 +36,15 @@ class PokeInfoActivity : AppCompatActivity() {
             binding.heightText.text = "HEIGHT: ${pokemon.height / 10.0}m"
             binding.weightText.text = "WEIGHT: ${pokemon.weight / 10.0}kg"
 
-           // binding.typeText.text = "Tipo: ${typeNames.joinToString()}"
             binding.typeText.text = "TYPE: ${typeNames.joinToString(", ") { it.capitalize()}}"
 
             binding.expBaseText.text = "EXP: ${pokemon.baseExperience}"
 
             Glide.with(this).load(pokemon.sprites.frontDefault).into(binding.imageView)
         })
+
+
+        //Exibe a descricao e configura a linguagem para ingles
 
         viewModel.getPokemonDescription(id)
         viewModel.pokemonDescription.observe(this) { pokemon ->
@@ -55,6 +59,7 @@ class PokeInfoActivity : AppCompatActivity() {
             viewModel.pokemonInfo.value?.englishFlavorTextEntries =
                 englishEntries.map { it.flavorText }
         }
+        //Botao que volta
         binding.botaoRetornar.setOnClickListener {
             val intent = Intent(this, PokemonList::class.java)
             startActivity(intent)
